@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canDash = true;
     private bool isDashing;
-    
 
     [Header("Dash Settings")]
     [SerializeField] float dashSpeed = 10f;
@@ -23,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         if(isDashing){
             return;
         }
+        
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement = movement.normalized;
@@ -45,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private IEnumerator Dash(){
+        if(!IsMoving()){
+            yield break;
+        }
         canDash = false;
         isDashing = true;
         rb.velocity = new Vector2(movement.x * dashSpeed, movement.y * dashSpeed);
@@ -58,5 +61,13 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
 
         canDash = true;
+    }
+
+    private bool IsMoving(){
+        if(movement.x == 0 && movement.y == 0){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

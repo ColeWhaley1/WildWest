@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Collidable
+  - Collectible
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,12 @@ TagManager:
   - name: Trails
     uniqueID: 472150887
     locked: 0
+  - name: Collectibles
+    uniqueID: 1034437469
+    locked: 0
   - name: PlayerAndObjects
     uniqueID: 2580198103
+    locked: 0
+  - name: UI
+    uniqueID: 1793387641
     locked: 0
